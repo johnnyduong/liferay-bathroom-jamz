@@ -3,49 +3,83 @@
 </head>
 
 <body>
-	{{> loginButtons}}
-
 	{{#if currentUser}}
-		<p><img src="{{profileURL}}" width=30> Hello, {{firstName}}!</p>
+		<p><img src="{{profileURL}}" width=30> Hello, {{> loginButtons}}</p>
+	{{else}}
+		{{> loginButtons}}
 	{{/if}}
 
-	<h1>Welcome to Meteor!</h1>
+	<h1>Liferay Bathroom Jamz</h1>
 
-	{{> hello}}
+	{{> bodyTemplate}}
 </body>
 
-<template name="hello">
+<template name="bodyTemplate">
 	<div class="row">
 		<div class="col-md-6 genre-options">
 			<form id="genreList">
-				<ul>
-					{{> genreOption}}
-					{{> genreOption}}
-					{{> genreOption}}
-					{{> genreOption}}
+				<ul class="list-group">
+					<li class="list-group-item genre-option input-group">
+						<input type="radio" value="country" name="genre" />
+						Country
+					</li>
+					<li class="list-group-item genre-option input-group">
+						<input type="radio" value="rap" name="genre" />
+						Rap
+					</li>
+					<li class="list-group-item genre-option input-group">
+						<input type="radio" value="rb" name="genre" />
+						R&B
+					</li>
+					<li class="list-group-item genre-option input-group">
+						<input type="radio" value="rock" name="genre" />
+						Rock
+					</li>
+					<li class="list-group-item genre-option input-group">
+						<input type="radio" value="dance" name="genre" />
+						Dance
+					</li>
 				</ul>
 			</form>
-			
+
 		</div>
-		<div class="col-md-6">
-			{{> nextUp}}
-			{{> nextUp}}
-			{{> nextUp}}
-			{{> nextUp}}
+		<div class="col-md-6 genre-next-up">
+			<ul class="list-group">
+				<li class="list-group-item next-up-item">
+					<span class="badge">12</span>
+					Genre
+				</li>
+				<li class="list-group-item next-up-item">
+					<span class="badge">12</span>
+					Genre
+				</li>
+				<li class="list-group-item next-up-item">
+					<span class="badge">12</span>
+					Genre
+				</li>
+				<li class="list-group-item next-up-item">
+					<span class="badge">12</span>
+					Genre
+				</li>
+				<li class="list-group-item next-up-item">
+					<span class="badge">12</span>
+					Genre
+				</li>
+			</ul>
 		</div>
 	</div>
 </template>
 
 <template name="genreOption">
-	<li class="genre-option input-group">
-		<span class="input-group-addon">
-			<input type="radio" value="genre" name="genre" />
-		</span>
+	<li class="genre-option input-group list-group-item">
+		<input type="radio" value="{{genre}}" name="{{genre}}" />
+		{{genre}}
 	</li>
 </template>
 
 <template name="nextUp">
-	<div class="next-up">
-
-	</div>
+	<li class="next-up list-group-item">
+		<span class="badge">{{genreCount}}</span>
+		{{genre}}
+	</li>
 </template>
