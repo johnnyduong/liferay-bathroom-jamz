@@ -41,8 +41,12 @@ if (Meteor.isServer) {
 			}
 		];
 
-		for (var i = 0; i < musicObjects.length; i++) {
-			Music.insert(musicObjects[i]);
+		Music.remove({});
+
+		if (Music.find().count() === 0) {
+			for (var i = 0; i < musicObjects.length; i++) {
+				Music.insert(musicObjects[i]);
+			}
 		}
 	});
 }
@@ -55,16 +59,11 @@ if (Meteor.isClient) {
 		}
 	});
 
-
-
 	Template.bodyTemplate.events({
 		'change #genreList' : function(evt) {
 			console.log("changed!");
 
 			var selected = $("input[name=genre]:checked").val();
-
-			CurrentSelection.update(old);
-			console.log(selected);
 		}
 	});
 }
