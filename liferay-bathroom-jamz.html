@@ -19,67 +19,33 @@
 		<div class="col-md-6 genre-options">
 			<form id="genreList">
 				<ul class="list-group">
-					<li class="list-group-item genre-option input-group">
-						<input type="radio" value="country" name="genre" />
-						Country
-					</li>
-					<li class="list-group-item genre-option input-group">
-						<input type="radio" value="rap" name="genre" />
-						Rap
-					</li>
-					<li class="list-group-item genre-option input-group">
-						<input type="radio" value="rb" name="genre" />
-						R&B
-					</li>
-					<li class="list-group-item genre-option input-group">
-						<input type="radio" value="rock" name="genre" />
-						Rock
-					</li>
-					<li class="list-group-item genre-option input-group">
-						<input type="radio" value="dance" name="genre" />
-						Dance
-					</li>
+					{{#each score}}
+						{{> genreOption}}
+					{{/each}}
 				</ul>
 			</form>
 
 		</div>
 		<div class="col-md-6 genre-next-up">
 			<ul class="list-group">
-				<li class="list-group-item next-up-item">
-					<span class="badge">12</span>
-					Genre
-				</li>
-				<li class="list-group-item next-up-item">
-					<span class="badge">12</span>
-					Genre
-				</li>
-				<li class="list-group-item next-up-item">
-					<span class="badge">12</span>
-					Genre
-				</li>
-				<li class="list-group-item next-up-item">
-					<span class="badge">12</span>
-					Genre
-				</li>
-				<li class="list-group-item next-up-item">
-					<span class="badge">12</span>
-					Genre
-				</li>
+				{{#each score}}
+					{{> nextUp}}
+				{{/each}}
 			</ul>
 		</div>
 	</div>
 </template>
 
 <template name="genreOption">
-	<li class="genre-option input-group list-group-item">
-		<input type="radio" value="{{genre}}" name="{{genre}}" />
-		{{genre}}
+	<li class="genre-option list-group-item">
+		<input type="radio" value="{{name}}" name="genre" />
+		{{name}}
 	</li>
 </template>
 
 <template name="nextUp">
 	<li class="next-up list-group-item">
-		<span class="badge">{{genreCount}}</span>
-		{{genre}}
+		<span class="badge">{{votes}}</span>
+		{{name}}
 	</li>
 </template>
