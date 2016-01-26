@@ -3,6 +3,12 @@
 </head>
 
 <body>
+	{{#if currentUser}}
+		<p><img src="{{profileURL}}" width=30> Hello, {{> loginButtons}}</p>
+	{{else}}
+		{{> loginButtons}}
+	{{/if}}
+
 	<h1>Welcome to Meteor!</h1>
 
 	{{> hello}}
