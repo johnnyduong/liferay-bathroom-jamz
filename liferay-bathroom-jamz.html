@@ -1,14 +1,40 @@
 <head>
-  <title>liferay-bathroom-jamz</title>
+	<title>liferay-bathroom-jamz</title>
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
+	<h1>Welcome to Meteor!</h1>
 
-  {{> hello}}
+	{{> hello}}
 </body>
 
 <template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+	<div class="row">
+		<div class="col-md-6 genre-options">
+			{{> genreOption}}
+			{{> genreOption}}
+			{{> genreOption}}
+			{{> genreOption}}
+		</div>
+		<div class="col-md-6">
+			{{> nextUp}}
+			{{> nextUp}}
+			{{> nextUp}}
+			{{> nextUp}}
+		</div>
+	</div>
+</template>
+
+<template name="genreOption">
+	<div class="genre-option input-group">
+		<span class="input-group-addon">
+			<input type="radio" value="genre" name="genre" />
+		</span>
+	</div>
+</template>
+
+<template name="nextUp">
+	<div class="next-up">
+
+	</div>
 </template>
