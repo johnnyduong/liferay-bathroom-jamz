@@ -14,6 +14,23 @@ if (Meteor.isClient) {
       Session.set('counter', Session.get('counter') + 1);
     }
   });
+  
+	//Login Templates -- DONT REMOVE
+	Template.body.helpers({
+		firstName: function(){
+			var user = Meteor.user(); 
+			if (user) {
+				return user.services.google.given_name;    
+			} 
+		},
+
+		profileURL: function() {
+			var user = Meteor.user(); 
+			if (user) {
+				return user.services.google.picture; 
+			} 
+		}
+	});
 }
 
 if (Meteor.isServer) {
