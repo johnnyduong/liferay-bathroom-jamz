@@ -11,10 +11,15 @@
 <template name="hello">
 	<div class="row">
 		<div class="col-md-6 genre-options">
-			{{> genreOption}}
-			{{> genreOption}}
-			{{> genreOption}}
-			{{> genreOption}}
+			<form id="genreList">
+				<ul>
+					{{> genreOption}}
+					{{> genreOption}}
+					{{> genreOption}}
+					{{> genreOption}}
+				</ul>
+			</form>
+			
 		</div>
 		<div class="col-md-6">
 			{{> nextUp}}
@@ -26,11 +31,11 @@
 </template>
 
 <template name="genreOption">
-	<div class="genre-option input-group">
+	<li class="genre-option input-group">
 		<span class="input-group-addon">
 			<input type="radio" value="genre" name="genre" />
 		</span>
-	</div>
+	</li>
 </template>
 
 <template name="nextUp">
