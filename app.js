@@ -7,7 +7,7 @@ if (Meteor.isServer) {
 				description : "Roll down your windows while driving your pickup",
 				id : 0,
 				name : "Country",
-				votes : 4
+				votes : 0
 			},
 			{
 				description : "",
@@ -19,7 +19,7 @@ if (Meteor.isServer) {
 				description : "",
 				id : 0,
 				name : "Disney",
-				votes : 5
+				votes : 0
 			},
 			{
 				description: "",
@@ -31,7 +31,7 @@ if (Meteor.isServer) {
 				description: "",
 				id : 4,
 				name : "Metal",
-				votes : 2
+				votes : 0
 			},
 			{
 				description: "",
