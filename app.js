@@ -41,10 +41,8 @@ if (Meteor.isServer) {
 			}
 		];
 
-		if (Music.length == 0) {
-			for (var i = 0; i < musicObjects.length; i++) {
-				Music.insert(musicObjects[i])
-			}
+		for (var i = 0; i < musicObjects.length; i++) {
+			Music.insert(musicObjects[i]);
 		}
 	});
 }
@@ -53,8 +51,8 @@ if (Meteor.isServer) {
 if (Meteor.isClient) {
 	Template.bodyTemplate.helpers({
 		score: function () {
-				return Music.find({}, {sort: { votes: -1 }});
-			}
+			return Music.find({}, {sort: { votes: -1 }});
+		}
 	});
 
 
