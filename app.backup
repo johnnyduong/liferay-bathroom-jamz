@@ -1,0 +1,106 @@
+Music = new Mongo.Collection("music");
+
+if (Meteor.isServer) {
+	Meteor.startup(function () {
+		var musicObjects = [
+			{
+				description : "Roll down your windows while driving your pickup",
+				id : 0,
+				name : "Country",
+				votes : 1
+			},
+			{
+				description : "",
+				id : 0,
+				name : "K-Pop",
+				votes : 2
+			},
+			{
+				description : "",
+				id : 0,
+				name : "Disney",
+				votes : 3
+			},
+			{
+				description: "",
+				id : 4,
+				name : "Techno",
+				votes : 4
+			},
+			{
+				description: "",
+				id : 4,
+				name : "Metal",
+				votes : 5
+			},
+			{
+				description: "",
+				id : 4,
+				name : "Filmscores",
+				votes : 6
+			}
+		];
+
+		Music.remove({});
+
+		if (Music.find().count() === 0) {
+			for (var i = 0; i < musicObjects.length; i++) {
+				Music.insert(musicObjects[i]);
+			}
+		}
+		
+		Meteor.setInterval(function() {
+			var date = new Date();
+			var time = date.getSeconds();
+	//		var time = date.getMinutes();
+			
+			console.log(time);
+			
+			if(time == 0 || time == 15 || time == 30 || time == 45) {
+				var winnerId = findWinner();
+				console.log(winnerId)
+				changeMusic(winnerId);
+			}
+		}, 1000);
+	//  }, 60000);
+	});
+}
+
+var findWinner = function () {
+	var list = Music.find().fetch();
+
+	var highestVoteMusic = list[0];
+	
+	console.log("List of potential music votes");			
+	for(var i=1; i < list.length; i++) {
+		console.log(list[i].name + " : " + list[i].votes);
+		if(highestVoteMusic.votes < list[i].votes) {
+			highestVoteMusic = list[i];
+		}
+	}
+	return highestVoteMusic._id;			
+}
+
+var changeMusic = function (musicId) {
+	console.log("change music to " + Music.findOne(musicId).name);
+
+	
+}
+
+if (Meteor.isClient) {
+	Template.bodyTemplate.helpers({
+		score: function () {
+			return Music.find({}, {sort: { votes: -1 }});
+		}
+	});
+
+	Template.bodyTemplate.events({
+		'change #genreList' : function(evt) {
+			console.log("changed!");
+
+			var selected = $("input[name=genre]:checked").val();
+			
+
+		}
+	});
+}

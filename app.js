@@ -51,7 +51,46 @@ if (Meteor.isServer) {
 		}
 		
 		CurrentSelection.remove({});
+	
+		checkTimeInterval();
 	});
+}
+
+function checkTimeInterval() {
+	Meteor.setInterval(function() {
+		var date = new Date();
+		var time = date.getSeconds();
+//		var time = date.getMinutes();
+		
+		//if(time == 0 || time == 30) {
+		if(time == 0 || time == 15 || time == 30 || time == 45) {	
+			var winnerId = findWinner();
+
+			changeMusic(winnerId);
+		}
+	}, 1000);
+//  }, 60000);
+}
+
+function findWinner() {
+	var list = Music.find().fetch();
+	var highestVoteMusic = list[0];
+	
+	console.log("List of potential music votes");			
+	for(var i=1; i < list.length; i++) {
+		console.log(list[i].name + " : " + list[i].votes);
+		if(highestVoteMusic.votes < list[i].votes) {
+			highestVoteMusic = list[i];
+		}
+	}
+	return highestVoteMusic._id;			
+}
+
+function changeMusic(_id) {
+	console.log("change music to " + Music.findOne(_id).name);
+
+
+	
 }
 
 
