@@ -5,37 +5,37 @@ if (Meteor.isServer) {
 		var musicObjects = [
 			{
 				description : "Roll down your windows while driving your pickup",
-				id : 0,
+				id : "PLv9bNxDawPe2N33iKGQZQZE9rmg3xObxo",
 				name : "Country",
 				votes : 0
 			},
 			{
 				description : "",
-				id : 0,
+				id : "PLv9bNxDawPe1POEqcjGgrS726XslzG1BX",
 				name : "K-Pop",
 				votes : 0
 			},
 			{
 				description : "",
-				id : 0,
+				id : "PLv9bNxDawPe0hS_qQIFm0T97KQZXUBKQR",
 				name : "Disney",
 				votes : 0
 			},
 			{
 				description: "",
-				id : 4,
+				id : "PLv9bNxDawPe3nU7E1FR7RFL2mXWA7gj28",
 				name : "Techno",
 				votes : 0
 			},
 			{
 				description: "",
-				id : 4,
+				id : "PLv9bNxDawPe0ECBZ-2rkFpBjMsi_6QtUp",
 				name : "Metal",
 				votes : 0
 			},
 			{
 				description: "",
-				id : 4,
+				id : "PLv9bNxDawPe1c-HYINpPqe6MDOKltJ4ze",
 				name : "Filmscores",
 				votes : 0
 			}
