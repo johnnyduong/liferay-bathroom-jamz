@@ -15,12 +15,13 @@
 			<h1>Liferay Bathroom Jamz</h1>
 		</div>
 	</div>
-	
 
-	{{> bodyTemplate}}
-
-
-	{{> currentInfo}}
+	{{#if currentUser}}
+		{{> bodyTemplate}}
+		{{> currentInfo}}
+	{{else}}	
+		<h1>Please login.</h1>
+	{{/if}}
 </body>
 
 <template name="bodyTemplate">
@@ -58,7 +59,7 @@
 
 <template name="genreOption">
 	<li class="genre-option list-group-item">
-		<input type="radio" value="{{id}}" name="genre" />
+		<input type="radio" value="{{playerId}}" name="genre" />
 		{{name}}
 	</li>
 </template>

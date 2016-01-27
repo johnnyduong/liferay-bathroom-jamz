@@ -98,9 +98,9 @@ if (Meteor.isClient) {
 	});
 }
 
-function updateCurrentSelected(musicId) {
+function updateCurrentSelected(playerId) {
 	var oldId = 0;
-	var newId = musicId;
+	var newId = playerId;
 
 	var currentSelections = CurrentSelection.find({ "userId" : Meteor.userId()});
 	var currentSelection = currentSelections.fetch()[0];
@@ -109,14 +109,14 @@ function updateCurrentSelected(musicId) {
 		oldId =  currentSelection.newId;
 
 		CurrentSelection.update(currentSelection._id, {$set: {oldId: oldId}});
-		CurrentSelection.update(currentSelection._id, {$set: {newId: musicId}});
+		CurrentSelection.update(currentSelection._id, {$set: {newId: playerId}});
 	}
 	else {
 		CurrentSelection.insert(
 		{
 			userId : Meteor.userId(),
 			oldId : 0,
-			newId : musicId
+			newId : playerId
 		});
 	}
 
