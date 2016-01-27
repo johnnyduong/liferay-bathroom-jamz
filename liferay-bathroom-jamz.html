@@ -3,15 +3,23 @@
 </head>
 
 <body>
-	{{#if currentUser}}
-		<p><img src="{{profileURL}}" width=30> Hello, {{> loginButtons}}</p>
-	{{else}}
-		{{> loginButtons}}
-	{{/if}}
+	<div class="row">
+		<div class="col-md-12 gutter ">
+			{{#if currentUser}}
+				<p><img src="{{profileURL}}" width=30> Hello, {{> loginButtons}}</p>
+			{{else}}
+				{{> loginButtons}}
+			{{/if}}
 
-	<h1>Liferay Bathroom Jamz</h1>
+			<h1>Liferay Bathroom Jamz</h1>
+		</div>
+	</div>
+	
 
 	{{> bodyTemplate}}
+
+
+	{{> currentInfo}}
 </body>
 
 <template name="bodyTemplate">
@@ -32,6 +40,17 @@
 					{{> nextUp}}
 				{{/each}}
 			</ul>
+		</div>
+	</div>
+</template>
+
+<template name="currentInfo">
+	<div class="row">
+		<div class="col-md-12 gutter">
+			Current Time: {{time}} 
+			<br />
+
+			Currently Playing: 
 		</div>
 	</div>
 </template>
