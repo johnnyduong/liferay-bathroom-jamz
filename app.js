@@ -1,4 +1,5 @@
 Music = new Mongo.Collection("music");
+CurrentSelection = new Mongo.Collection("currentSelection")
 
 if (Meteor.isServer) {
 	Meteor.startup(function () {
@@ -48,6 +49,8 @@ if (Meteor.isServer) {
 				Music.insert(musicObjects[i]);
 			}
 		}
+		
+		CurrentSelection.remove({});
 	});
 }
 
@@ -90,6 +93,32 @@ if (Meteor.isClient) {
 		'change #genreList' : function(evt) {
 			var selected = $("input[name=genre]:checked").val();
 
+			updateCurrentSelected(selected);
 		}
 	});
 }
+
+function updateCurrentSelected(musicId) {
+	var oldId = 0;
+	var newId = musicId;
+
+	var currentSelections = CurrentSelection.find({ "userId" : Meteor.userId()});
+	var currentSelection = currentSelections.fetch()[0];
+
+	if (currentSelection) {
+		oldId =  currentSelection.newId;
+
+		CurrentSelection.update(currentSelection._id, {$set: {oldId: oldId}});
+		CurrentSelection.update(currentSelection._id, {$set: {newId: musicId}});
+	}
+	else {
+		CurrentSelection.insert(
+		{
+			userId : Meteor.userId(),
+			oldId : 0,
+			newId : musicId
+		});
+	}
+
+	updateVotes(newId, oldId);
+} 
