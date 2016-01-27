@@ -1,3 +1,25 @@
+
+.gutter {
+	padding: 0 50px;
+}
+
+body {
+	background: url(/resources/bg.jpg) center center fixed;
+	 -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 .genre-options, .genre-next-up {
 	padding: 0 50px;
+}
+
+h1 {
+	font-family: 'Oleo Script', cursive;
+	text-align: center;
+	font-size: 70px;
+	letter-spacing: -2px;
+	margin-bottom: 30px;
+
 }
